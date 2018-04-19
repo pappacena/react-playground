@@ -3,5 +3,17 @@
   "rules": {
     "react/prefer-stateless-function": "off",
     "react/jsx-filename-extension": "off"
-  }
+  },
+  "overrides": [
+    {
+      "files": [ "*test.js" ],
+      "env": {
+        "browser": true,
+        "mocha": true
+      },
+      "rules": {
+        "no-console": "off"
+      }
+    }
+  ]
 }

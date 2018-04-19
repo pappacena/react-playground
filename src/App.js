@@ -7,7 +7,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Personal books</h1>
-        <BookEditor />
+        <BookEditor onAddBook={console.log} />
       </div>
     );
   }

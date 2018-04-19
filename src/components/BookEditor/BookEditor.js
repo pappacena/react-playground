@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './styles.scss';
 
 
@@ -14,9 +15,13 @@ export default class BookEditor extends React.Component {
       <div className="">
         <form>
           <input placeholder="ISBN" />
-          <button>Add</button>
+          <button onClick={this.props.onAddBook}>Add</button>
         </form>
       </div>
     );
   }
 }
+
+BookEditor.propTypes = {
+  onAddBook: PropTypes.func.isRequired,
+};
