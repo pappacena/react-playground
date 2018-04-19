@@ -1,4 +1,3 @@
-/* eslint-env node, mocha, browser */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';

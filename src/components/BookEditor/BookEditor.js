@@ -7,15 +7,19 @@ export default class BookEditor extends React.Component {
   constructor() {
     super();
     this.inputField = null;
-    this.addButton = null;
+  }
+
+  onButtonClick(e) {
+    this.props.onAddBook(this.inputField.value);
+    e.preventDefault();
   }
 
   render() {
     return (
       <div className="">
         <form>
-          <input placeholder="ISBN" />
-          <button onClick={this.props.onAddBook}>Add</button>
+          <input ref={e => this.inputField = e} placeholder="ISBN" />
+          <button onClick={this.onButtonClick.bind(this)}>Add</button>
         </form>
       </div>
     );

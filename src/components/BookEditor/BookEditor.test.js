@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import sinon from 'sinon';
 import { expect } from 'chai';
 import BookEditor from './BookEditor';
@@ -16,7 +16,7 @@ it('renders form and its elements', () => {
 
 it('form click handler works', () => {
   const onAddBook = sinon.spy();
-  const wrapper = shallow(<BookEditor onAddBook={onAddBook} />);
+  const wrapper = mount(<BookEditor onAddBook={onAddBook} />);
 
   wrapper.find('button').simulate('click');
   expect(onAddBook.calledOnce).to.equal(true);
