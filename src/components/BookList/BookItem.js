@@ -1,18 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col, Button } from 'react-bootstrap';
+import './styles.scss';
 
 
 class BookItem extends React.Component {
+  constructor() {
+    super();
+    this.readField = null;
+  }
+
   onRemove() {
     if (this.props.onRemove) {
       this.props.onRemove(this.props.data);
     }
   }
 
-  onReadChange(status) {
+  onReadChange() {
     if (this.props.onReadChange) {
-      this.props.onReadChange(this.props.data, status);
+      this.props.onReadChange(this.props.data, this.readField.checked);
     }
   }
 
@@ -26,12 +32,17 @@ class BookItem extends React.Component {
         <Row>
           <Col sm={1}>
             <p>Read?</p>
-            <input type="checkbox" checked={read} onChange={this.onReadChange.bind(this)} />
+            <input
+              type="checkbox"
+              checked={read}
+              onChange={this.onReadChange.bind(this)}
+              ref={e => this.readField = e}
+            />
           </Col>
           <Col sm={2}>
-            <img alt="Cover for {title}" src={img} />
+            <img className="bookCover" alt="Cover for {title}" src={img} />
           </Col>
-          <Col sm={6}>
+          <Col sm={9}>
             <Row>
               <Col><h1>{title}</h1></Col>
             </Row>

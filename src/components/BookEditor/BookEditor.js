@@ -14,7 +14,7 @@ export class BookEditor extends React.Component {
   }
 
   onButtonClick(e) {
-    this.props.onAddBook(this.inputField.value);
+    this.props.onAddBook(this.inputField.value.replace(/\D/g, ''));
     e.preventDefault();
   }
 
