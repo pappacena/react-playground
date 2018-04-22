@@ -29,8 +29,7 @@ The main components are basically 2 (+2 components not connected to Redux flow, 
 - BookEditor: the form do add a new book by it's ISBN
 - BookList: that displays the list of all books added, and the checkbox to indicate that it was already read or not;
 
-
-
+The test files are together with the things they test. So, `BookItem.test.js` is the file with the tests for `BookItem.js`, `BookActions.test.js` tests `BookActions.js` and so on.
 
 
 
