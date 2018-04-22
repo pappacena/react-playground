@@ -6,7 +6,7 @@ import { expect } from 'chai';
 import BookItem from './BookItem';
 
 const testItem = {
-  id: '123',
+  isbn: '123',
   author: 'Saint Exupery',
   title: 'Little Prince',
   img: 'https://images-na.ssl-images-amazon.com/images/I/41lWvjvxhSL._SX314_BO1,204,203,200_.jpg',
@@ -15,12 +15,13 @@ const testItem = {
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<BookItem data={testItem} />, div);
+  const bookItem = <BookItem data={testItem} onRemove={console.log} onReadChange={console.log} />;
+  ReactDOM.render(bookItem, div);
   ReactDOM.unmountComponentAtNode(div);
 });
 
 it('renders form and its elements', () => {
-  const wrapper = shallow(<BookItem data={testItem} />);
+  const wrapper = shallow(<BookItem data={testItem} onRemove={console.log} onReadChange={console.log} />);
   /* const form = <form />;
   expect(wrapper.find('form')).to.have.length(1);
   expect(wrapper.find('input[placeholder="ISBN"]')).to.have.length(1);
