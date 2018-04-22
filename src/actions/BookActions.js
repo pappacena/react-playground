@@ -46,6 +46,14 @@ export const addBook = (isbn, $axios = axios, $storage = window.localStorage) =>
   }
 );
 
+export const refreshBooks = ($storage) => {
+  const books = getBooks($storage);
+  return {
+    type: 'BOOKS_REFRESHED',
+    payload: Object.values(books),
+  };
+};
+
 export const changeReadState = (isbn, read = true, $storage = window.localStorage) => {
   const books = getBooks($storage);
   books[isbn].read = read;

@@ -26,7 +26,7 @@ class App extends Component {
       <Provider store={store}>
         <div className="App">
           <h1>Personal books</h1>
-          <BookEditor onAddBook={isbn => console.log(isbn)} />
+          <BookEditor />
           <BookList />
         </div>
       </Provider>

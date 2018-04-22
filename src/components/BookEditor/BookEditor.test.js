@@ -3,13 +3,15 @@ import { Provider } from 'react-redux';
 import { shallow, mount } from 'enzyme';
 import sinon from 'sinon';
 import { expect } from 'chai';
-import BookEditor from './BookEditor';
+import { BookEditor } from './BookEditor';
 import { store } from '../../App';
 
 
 it('renders form and its elements', () => {
   const wrapper = mount(
-    <Provider store={store}><BookEditor onAddBook={console.log} /></Provider>,
+    <Provider store={store}>
+      <BookEditor onAddBook={console.log} />
+    </Provider>,
   );
 
   const form = <form />;
@@ -26,6 +28,7 @@ it('form click handler works', () => {
       <BookEditor onAddBook={onAddBook} />
     </Provider>,
   );
+  wrapper.find('BookEditor').props.onAddBook = onAddBook;
 
   wrapper.find('button').simulate('click');
   expect(onAddBook.calledOnce).to.equal(true);
