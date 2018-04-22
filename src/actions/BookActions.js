@@ -1,6 +1,9 @@
 import axios from 'axios';
 
 const getBooks = ($storage = window.localStorage) => {
+  if (!$storage) {
+    return {};
+  }
   const data = $storage.getItem('books');
   if (!data) {
     return {};
@@ -9,6 +12,9 @@ const getBooks = ($storage = window.localStorage) => {
 };
 
 const setBooks = (books, $storage = window.localStorage) => {
+  if (!$storage) {
+    return;
+  }
   $storage.setItem('books', JSON.stringify(books));
 };
 

@@ -7,14 +7,15 @@ import './styles.scss';
 
 
 // exporting non-default for test purpose
-export class BookEditor extends React.Component {
+export class RawBookEditor extends React.Component {
   constructor() {
     super();
     this.inputField = null;
   }
 
   onButtonClick(e) {
-    this.props.onAddBook(this.inputField.value.replace(/\D/g, ''));
+    const isbn = this.inputField.value ? this.inputField.value.replace(/\D/g, '') : '';
+    this.props.onAddBook(isbn);
     e.preventDefault();
   }
 
@@ -54,12 +55,12 @@ export class BookEditor extends React.Component {
   }
 }
 
-BookEditor.defaultProps = {
+RawBookEditor.defaultProps = {
   errorMessage: null,
   loading: false,
 };
 
-BookEditor.propTypes = {
+RawBookEditor.propTypes = {
   onAddBook: PropTypes.func.isRequired,
   loading: PropTypes.bool,
   errorMessage: PropTypes.string,
@@ -73,4 +74,4 @@ const mapStateToProps = state => ({
 
 export default connect(mapStateToProps, {
   onAddBook: addBook,
-})(BookEditor);
+})(RawBookEditor);
