@@ -15,7 +15,7 @@ import './App.scss';
 const logger = createLogger();
 let middlewares = [thunk, (process.env.NODE_ENV !== 'production' && logger)];
 middlewares = middlewares.filter(x => x);
-const store = createStore(
+export const store = createStore(
   allReducers,
   applyMiddleware.apply(this, middlewares),
 );

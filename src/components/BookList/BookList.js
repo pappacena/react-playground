@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Grid } from 'react-bootstrap';
 import BookItem from './BookItem';
+import LoadingMask from '../LoadingMask';
 
 
 class BookList extends React.Component {
@@ -30,9 +31,12 @@ class BookList extends React.Component {
 
   render() {
     return (
-      <Grid>
-        {this.props.books.map(data => this.renderItem(data))}
-      </Grid>
+      <div style={{ position: 'relative' }}>
+        <Grid>
+          {this.props.loading && <LoadingMask />}
+          {this.props.books.map(data => this.renderItem(data))}
+        </Grid>
+      </div>
     );
   }
 }

@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import LoadingMask from '../LoadingMask';
 import './styles.scss';
 
 
-export default class BookEditor extends React.Component {
+class BookEditor extends React.Component {
   constructor() {
     super();
     this.inputField = null;
@@ -16,7 +18,8 @@ export default class BookEditor extends React.Component {
 
   render() {
     return (
-      <div className="">
+      <div className="bookEditor">
+        {this.props.loading && <LoadingMask />}
         <form>
           <input ref={e => this.inputField = e} placeholder="ISBN" />
           <button onClick={this.onButtonClick.bind(this)}>Add</button>
@@ -28,4 +31,12 @@ export default class BookEditor extends React.Component {
 
 BookEditor.propTypes = {
   onAddBook: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
+
+const mapStateToProps = state => ({
+  books: state.books.books,
+  loading: state.books.loading,
+});
+
+export default connect(mapStateToProps, null)(BookEditor);
