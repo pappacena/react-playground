@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { shallow, mount } from 'enzyme';
-import sinon from 'sinon';
 import { expect } from 'chai';
 import BookItem from './BookItem';
 
@@ -21,18 +20,10 @@ it('renders without crashing', () => {
 });
 
 it('renders form and its elements', () => {
-  const wrapper = shallow(<BookItem data={testItem} onRemove={console.log} onReadChange={console.log} />);
-  /* const form = <form />;
-  expect(wrapper.find('form')).to.have.length(1);
-  expect(wrapper.find('input[placeholder="ISBN"]')).to.have.length(1);
-  expect(wrapper.find('button')).to.have.length(1); */
+  const wrapper = shallow(
+    <BookItem data={testItem} onRemove={console.log} onReadChange={console.log} />,
+  );
+  expect(wrapper.find('h1')).to.have.length(1);
+  expect(wrapper.find('input[type="checkbox"]')).to.have.length(1);
+  expect(wrapper.find('Button[className="removeBook"]')).to.have.length(1);
 });
-
-
-/* it('form click handler works', () => {
-  const onAddBook = sinon.spy();
-  const wrapper = mount(<BookEditor onAddBook={onAddBook} />);
-
-  wrapper.find('button').simulate('click');
-  expect(onAddBook.calledOnce).to.equal(true);
-}); */
