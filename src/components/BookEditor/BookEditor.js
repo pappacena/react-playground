@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert } from 'react-bootstrap';
+import { Alert, Button, Panel, FormControl, FormGroup } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addBook } from '../../actions';
@@ -27,13 +27,29 @@ export class BookEditor extends React.Component {
 
   render() {
     return (
-      <div className="bookEditor">
-        {this.renderError()}
-        <form>
-          <input ref={e => this.inputField = e} placeholder="ISBN" />
-          <button disabled={this.props.loading} onClick={this.onButtonClick.bind(this)}>Add</button>
-        </form>
-      </div>
+      <Panel bsStyle="primary" className="bookEditor">
+        <Panel.Heading>
+          <Panel.Title componentClass="h2">Add book</Panel.Title>
+        </Panel.Heading>
+        <Panel.Body>
+          {this.renderError()}
+          <form>
+            <FormGroup>
+              <FormControl
+                ref={e => this.inputField = e}
+                placeholder="Type here the book's ISBN"
+              />
+              <Button
+                disabled={this.props.loading}
+                onClick={this.onButtonClick.bind(this)}
+                bsStyle="primary"
+              >
+                Add book
+              </Button>
+            </FormGroup>
+          </form>
+        </Panel.Body>
+      </Panel>
     );
   }
 }

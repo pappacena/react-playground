@@ -51,7 +51,7 @@ class BookItem extends React.Component {
               <Col>Authors: {authors}</Col>
             </Row>
             <Row>
-              <Button onClick={this.onRemove.bind(this)}>Remove</Button>
+              <Button bsStyle="danger" onClick={this.onRemove.bind(this)}>Remove</Button>
             </Row>
           </Col>
         </Row>
