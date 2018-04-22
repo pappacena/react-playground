@@ -38,7 +38,6 @@ export const addBook = (isbn, $axios = axios, $storage = window.localStorage) =>
         payload: Object.values(books),
       });
     } catch (e) {
-      console.error(e)
       dispatch({
         type: 'BOOK_ADD_ERROR',
         payload: 'Error adding book',
@@ -47,10 +46,22 @@ export const addBook = (isbn, $axios = axios, $storage = window.localStorage) =>
   }
 );
 
-export const changeReadState = (book, read) => {
-
+export const changeReadState = (isbn, read = true, $storage = window.localStorage) => {
+  const books = getBooks($storage);
+  books[isbn].read = read;
+  setBooks(books, $storage);
+  return {
+    type: 'BOOK_READ_STATE_CHANGED',
+    payload: Object.values(books),
+  };
 };
 
-export const removeBook = (book) => {
-
+export const removeBook = (isbn, $storage = window.localStorage) => {
+  const books = getBooks($storage);
+  delete books[isbn];
+  setBooks(books, $storage);
+  return {
+    type: 'BOOK_REMOVED',
+    payload: Object.values(books),
+  };
 };
