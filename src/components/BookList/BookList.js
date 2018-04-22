@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Grid } from 'react-bootstrap';
+import { Grid, Col, Row } from 'react-bootstrap';
 import BookItem from './BookItem';
 import LoadingMask from '../LoadingMask';
 import { refreshBooks, changeReadState, removeBook } from '../../actions';
@@ -22,7 +22,6 @@ class BookList extends React.Component {
   }
 
   renderItem(data) {
-    console.log(this.props.loading);
     return (
       <BookItem
         key={data.isbn}
@@ -35,9 +34,16 @@ class BookList extends React.Component {
 
   render() {
     return (
-      <div style={{ position: 'relative' }}>
+      <div className="bookList">
         <Grid>
           {this.props.loading && <LoadingMask />}
+          <Row>
+            <Col sm={1}><h4>Read?</h4></Col>
+            <Col sm={2} />
+            <Col sm={9}><h4>Book details</h4></Col>
+          </Row>
+          <hr />
+
           {this.props.books.map(data => this.renderItem(data))}
         </Grid>
       </div>

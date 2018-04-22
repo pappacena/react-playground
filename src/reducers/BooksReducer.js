@@ -6,7 +6,12 @@ const DEFAULT_STATE = {
   errorMessage: null,
 };
 
-const sortBooks = books => books.sort((a, b) => a.read > b.read);
+const sortBooks = books => books.sort((a, b) => {
+  if (a.read !== b.read) {
+    return a.read > b.read;
+  }
+  return a.title - b.title;
+});
 
 export default (state = DEFAULT_STATE, action) => {
   switch (action.type) {

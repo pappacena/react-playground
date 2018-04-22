@@ -31,7 +31,6 @@ class BookItem extends React.Component {
       <div>
         <Row>
           <Col sm={1}>
-            <p>Read?</p>
             <input
               type="checkbox"
               checked={read}
@@ -51,7 +50,13 @@ class BookItem extends React.Component {
               <Col>Authors: {authors}</Col>
             </Row>
             <Row>
-              <Button bsStyle="danger" onClick={this.onRemove.bind(this)}>Remove</Button>
+              <Button
+                className="removeBook"
+                bsStyle="danger"
+                onClick={this.onRemove.bind(this)}
+              >
+                Remove
+              </Button>
             </Row>
           </Col>
         </Row>

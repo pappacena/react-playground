@@ -1,3 +1,11 @@
-.bookCover {
-  max-width: 100%;
+.bookList {
+  position: 'relative';
+
+  .bookCover {
+    max-width: 100%;
+  }
+
+  .removeBook {
+    margin-top: 25px;
+  }
 }

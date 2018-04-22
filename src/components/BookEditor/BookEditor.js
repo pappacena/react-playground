@@ -28,7 +28,7 @@ export class RawBookEditor extends React.Component {
 
   render() {
     return (
-      <Panel bsStyle="primary" className="bookEditor">
+      <Panel className="bookEditor">
         <Panel.Heading>
           <Panel.Title componentClass="h2">Add book</Panel.Title>
         </Panel.Heading>
@@ -37,7 +37,7 @@ export class RawBookEditor extends React.Component {
           <form>
             <FormGroup>
               <FormControl
-                ref={e => this.inputField = e}
+                inputRef={e => this.inputField = e}
                 placeholder="Type here the book's ISBN"
               />
               <Button
