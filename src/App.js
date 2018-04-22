@@ -8,6 +8,7 @@ import { createLogger } from 'redux-logger';
 import allReducers from './reducers';
 
 import BookEditor from './components/BookEditor';
+import BookList from './components/BookList';
 import './App.scss';
 
 // Setup redux
@@ -16,7 +17,7 @@ let middlewares = [thunk, (process.env.NODE_ENV !== 'production' && logger)];
 middlewares = middlewares.filter(x => x);
 const store = createStore(
   allReducers,
-  applyMiddleware.apply(this, middlewares)
+  applyMiddleware.apply(this, middlewares),
 );
 
 class App extends Component {
@@ -26,6 +27,7 @@ class App extends Component {
         <div className="App">
           <h1>Personal books</h1>
           <BookEditor onAddBook={isbn => console.log(isbn)} />
+          <BookList />
         </div>
       </Provider>
     );
