@@ -1,3 +1,40 @@
+# Project Details
+
+## About this project
+
+This is just a pet project to test some things using React, browser local storage and test suits. It's just fetching books info from  https://openlibrary.org and storing it locally in the user's browser using `localStorage`.
+
+This project was done using React and Redux, with redux-thunk for async actions. For the frontend, it was used bootstrap (wrapped by react-bootstrap layer, to make the JSX more readable).
+
+*Note*: This project is already ejected
+
+## How to run
+
+If you run `yarn run start` it should start the development server, that displays the interface at `http://localhost:3000/`.
+
+`yarn run test` should start the test suit watcher.
+
+`yarn run build` should build the production build of this app.
+
+
+## The file tree
+The main app component is located in `App.js`. In `src` folder you will find basically 3 main folders:
+
+- `actions`, with Redux actions used by this app;
+- `reducers`, with Redux states of the application; and
+- `components`, with all React components used by the frontend.
+
+The main components are basically 2 (+2 components not connected to Redux flow, which are LoadingMask, that displays a simple blocking loading, and BookItem, that represents one block of book info):
+
+- BookEditor: the form do add a new book by it's ISBN
+- BookList: that displays the list of all books added, and the checkbox to indicate that it was already read or not;
+
+
+
+
+
+
+# Create-react-app original README
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
@@ -300,7 +337,7 @@ In the WebStorm menu `Run` select `Edit Configurations...`. Then click `+` and s
 
 Start your app by running `npm start`, then press `^D` on macOS or `F9` on Windows and Linux or click the green debug icon to start debugging in WebStorm.
 
-The same way you can debug your application in IntelliJ IDEA Ultimate, PhpStorm, PyCharm Pro, and RubyMine. 
+The same way you can debug your application in IntelliJ IDEA Ultimate, PhpStorm, PyCharm Pro, and RubyMine.
 
 ## Formatting Code Automatically
 
@@ -1989,7 +2026,7 @@ If you’re using [Apache HTTP Server](https://httpd.apache.org/), you need to c
     RewriteRule ^ index.html [QSA,L]
 ```
 
-It will get copied to the `build` folder when you run `npm run build`. 
+It will get copied to the `build` folder when you run `npm run build`.
 
 If you’re using [Apache Tomcat](http://tomcat.apache.org/), you need to follow [this Stack Overflow answer](https://stackoverflow.com/a/41249464/4878474).
 
@@ -2429,7 +2466,7 @@ To resolve this:
 1. Open an issue on the dependency's issue tracker and ask that the package be published pre-compiled.
   * Note: Create React App can consume both CommonJS and ES modules. For Node.js compatibility, it is recommended that the main entry point is CommonJS. However, they can optionally provide an ES module entry point with the `module` field in `package.json`. Note that **even if a library provides an ES Modules version, it should still precompile other ES6 features to ES5 if it intends to support older browsers**.
 
-2. Fork the package and publish a corrected version yourself. 
+2. Fork the package and publish a corrected version yourself.
 
 3. If the dependency is small enough, copy it to your `src/` folder and treat it as application code.
 

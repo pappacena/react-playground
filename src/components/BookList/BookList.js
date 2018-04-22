@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Grid, Col, Row } from 'react-bootstrap';
+import { Grid, Col, Row, Alert } from 'react-bootstrap';
 import BookItem from './BookItem';
 import LoadingMask from '../LoadingMask';
 import { refreshBooks, changeReadState, removeBook } from '../../actions';
@@ -32,7 +32,31 @@ class BookList extends React.Component {
     );
   }
 
+  // eslint-disable-next-line class-methods-use-this
+  renderEmptyMessage() {
+    return (
+      <Alert bsStyle="danger">
+        <p>No book added yet.</p>
+        <p>
+          Add it using the form above
+          <span role="img" aria-label="pointing up">👆</span>
+        </p>
+        <p>
+          Some ISBN for you to test:
+          9780822005421<br />
+          0375709177<br />
+          9780425168226<br />
+          0671000306<br />
+        </p>
+      </Alert>
+    );
+  }
+
   render() {
+    if (!this.props.books.length) {
+      return this.renderEmptyMessage();
+    }
+
     return (
       <div className="bookList">
         <Grid>
